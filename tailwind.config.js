@@ -16,6 +16,7 @@ module.exports = {
       },
       colors: {
         "brand-keppel": "var(--clr-keppel)",
+        "brand-opaleppel": "var(--clr-opaleppel)",
         "brand-opakeppel": "var(--clr-opakeppel)",
         "brand-shamrock-green": "var(--clr-shamrock-green)",
         "brand-sapphire": "var(--clr-sapphire)",
