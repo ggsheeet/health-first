@@ -22,7 +22,7 @@ const ScrollHeader = ({ onScrollToSection }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollTop = window.pageYOffset;
+      const scrollTop = window.scrollY;
       const shouldHaveScrolledClass = scrollTop > 0;
 
       setIsScrolled(shouldHaveScrolledClass);
