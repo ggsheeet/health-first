@@ -78,7 +78,7 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang='es'>
-			<GoogleTagManager gtmId='G-92WG923B8E' />
+			<GoogleTagManager gtmId='G-SVQ6CDBS2D' />
 			<body
 				className={`${rale.variable} ${montse.variable} ${noto.variable} ${notojp.variable} ${poppins.variable}`}
 			>
