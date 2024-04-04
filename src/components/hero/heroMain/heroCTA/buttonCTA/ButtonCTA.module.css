@@ -1,0 +1,26 @@
+/* Hero buttons styles */
+
+.button_cta {
+	display: inline-block;
+	font-family: var(--font-montse);
+	font-weight: 400;
+	font-size: 18px;
+	background-color: var(--clr-seasalt);
+	color: var(--clr-navy);
+	border: 2px solid var(--clr-seasalt);
+	border-radius: 36px;
+	transition: background-color 0.2s, color 0.3s;
+	padding: 12px 24px;
+
+	&:hover {
+		background-color: transparent;
+		color: var(--clr-seasalt);
+	}
+}
+
+@media (max-width: 768px) {
+	.button_cta {
+		font-size: 16px;
+		padding: 9px 21px;
+	}
+}
