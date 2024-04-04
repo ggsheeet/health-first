@@ -60,7 +60,7 @@ export const metadata: Metadata = {
 				height: 630
 			}
 		],
-		url: 'http://localhost:3000',
+		url: 'https://www.healthfirst.com.mx',
 		type: 'website'
 	},
 	alternates: {
@@ -78,9 +78,7 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang='es'>
-			<Head>
-      <GoogleTagManager gtmId="G-92WG923B8E" />
-			</Head>
+			<GoogleTagManager gtmId='G-92WG923B8E' />
 			<body
 				className={`${rale.variable} ${montse.variable} ${noto.variable} ${notojp.variable} ${poppins.variable}`}
 			>
