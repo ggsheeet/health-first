@@ -2,7 +2,7 @@
 const cspHeader = `
     default-src 'self';
 	  connect-src https://cdn.contentful.com https://www.healthfirst.com.mx ws://localhost:3000;;
-    script-src 'self' 'unsafe-eval' 'unsafe-inline';
+    script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com;
     style-src 'self' 'unsafe-inline';
     img-src 'self' blob: data: images.ctfassets.net;
     font-src 'self';
