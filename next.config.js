@@ -3,8 +3,8 @@ const cspHeader = `
     default-src 'self';
 	  connect-src https://cdn.contentful.com https://www.healthfirst.com.mx https://analytics.google.com ws://localhost:3000;;
     script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com;
-    style-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://fonts.googleapis.com;
-    img-src 'self' blob: data: images.ctfassets.net https://www.google.com.mx https://www.googletagmanager.com;
+    style-src 'self' 'unsafe-inline';
+    img-src 'self' blob: data: images.ctfassets.net;
     font-src 'self';
     object-src 'none';
     base-uri 'self';
