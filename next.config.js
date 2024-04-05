@@ -4,7 +4,7 @@ const cspHeader = `
 	  connect-src https://cdn.contentful.com https://www.healthfirst.com.mx https://analytics.google.com ws://localhost:3000;;
     script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com;
     style-src 'self' 'unsafe-inline';
-    img-src 'self' blob: data: images.ctfassets.net;
+    img-src 'self' blob: data: images.ctfassets.net https://www.google.com.mx;
     font-src 'self';
     object-src 'none';
     base-uri 'self';
