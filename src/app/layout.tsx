@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { GoogleTagManager } from '@next/third-parties/google'
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 import {
 	Raleway,
 	Noto_Sans,
@@ -77,10 +77,11 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang='es'>
+			<GoogleAnalytics gaId='G-SVQ6CDBS2D' />
+			<GoogleTagManager gtmId='GTM-TZNNH5QG' />
 			<body
 				className={`${rale.variable} ${montse.variable} ${noto.variable} ${notojp.variable} ${poppins.variable}`}
 			>
-				<GoogleTagManager gtmId='GTM-TZNNH5QG' />
 				{children}
 				<Footer />
 			</body>
