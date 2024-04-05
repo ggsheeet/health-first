@@ -77,10 +77,10 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang='es'>
-			<GoogleTagManager gtmId='GTM-TZNNH5QG' />
 			<body
 				className={`${rale.variable} ${montse.variable} ${noto.variable} ${notojp.variable} ${poppins.variable}`}
 			>
+				<GoogleTagManager gtmId='GTM-TZNNH5QG' />
 				{children}
 				<Footer />
 			</body>
