@@ -1,6 +1,4 @@
 import type { Metadata } from 'next'
-import Head from 'next/head'
-import Script from 'next/script'
 import { GoogleTagManager } from '@next/third-parties/google'
 import {
 	Raleway,
@@ -79,34 +77,11 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang='es'>
-			<Head>
-				{/* GTM script for the <head> section */}
-				<Script
-					strategy='lazyOnload'
-					dangerouslySetInnerHTML={{
-						__html: `
-                            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-                            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-                            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-                            })(window,document,'script','dataLayer','GTM-TZNNH5QG');
-                        `
-					}}
-				/>
-			</Head>
-			<GoogleTagManager gtmId='G-SVQ6CDBS2D' />
+			<GoogleTagManager gtmId='GTM-TZNNH5QG' />
 			<body
 				className={`${rale.variable} ${montse.variable} ${noto.variable} ${notojp.variable} ${poppins.variable}`}
 			>
 				{children}
-				<noscript>
-					<iframe
-						src='https://www.googletagmanager.com/ns.html?id=GTM-TZNNH5QG'
-						height='0'
-						width='0'
-						style={{ display: 'none', visibility: 'hidden' }}
-					/>
-				</noscript>
 				<Footer />
 			</body>
 		</html>
