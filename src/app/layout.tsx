@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import { GoogleTagManager } from '@next/third-parties/google'
 import {
 	Raleway,
@@ -79,6 +80,14 @@ export default function RootLayout({
 	return (
 		<html lang='es'>
 			<GoogleTagManager gtmId='G-SVQ6CDBS2D' />
+			<Script strategy='lazyOnload'>
+				{`
+					window.dataLayer = window.dataLayer || [];
+					function gtag(){dataLayer.push(arguments);}
+					gtag('js', new Date());
+					gtag('config', 'G-SVQ6CDBS2D');
+				`}
+			</Script>
 			<body
 				className={`${rale.variable} ${montse.variable} ${noto.variable} ${notojp.variable} ${poppins.variable}`}
 			>
