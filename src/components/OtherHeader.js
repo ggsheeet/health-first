@@ -1,3 +1,4 @@
+'use client'
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -36,7 +37,7 @@ const OtherHeader = () => {
   return (
     <div className="w-full z-50">
       {/* Top Header on desktops  */}
-      <header className="text-brand-ultra-violet min-w-full z-50 py-2 pl-8 pr-8 md:pl-4 md:pr-3 lg:pl-12 lg:pr-8 xl:pl-44 xl:pr-32 hidden md:block bg-slate-100">
+      <header className="text-brand-ultra-violet min-w-full z-50 py-2 pl-8 pr-8 md:pl-4 md:pr-3 lg:pl-12 lg:pr-8 xl:pl-44 xl:pr-32 hidden md:block">
         <div className="flex items-center container mx-auto justify-between h-[4rem]">
           {/* Logo */}
           <div className="w-12 h-12">
@@ -44,7 +45,7 @@ const OtherHeader = () => {
               <img
                 className="cursor-pointer"
                 objectfit="contain"
-                src="HF-MIN.png"
+                src="/HF-MIN.png"
               />
             </Link>
           </div>
@@ -91,14 +92,14 @@ const OtherHeader = () => {
       </header>
 
       {/* Top Header on smartphones */}
-      <header className="text-brand-ultra-violet z-50 md:hidden w-full h-[4.5rem] pt-2 bg-slate-100">
+      <header className="text-brand-ultra-violet z-50 md:hidden w-full h-[4.5rem] pt-2">
         <nav className="flex items-center justify-between px-8 py-1">
           <div className="flex items-center">
             <Link href="/" noreferrer="true" passHref>
               <img
                 className="w-12 h-12"
                 objectfit="contain"
-                src="HF-MIN.png"
+                src="/HF-MIN.png"
               />
             </Link>
           </div>

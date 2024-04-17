@@ -13,6 +13,7 @@ import './globals.css'
 const favicon = '/HF-MIN.png'
 
 const rale = Raleway({
+	weight: ['200', '300', '400', '500', '600'],
 	subsets: ['latin'],
 	variable: '--font-rale',
 	display: 'swap'

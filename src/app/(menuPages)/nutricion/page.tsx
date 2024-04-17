@@ -57,7 +57,6 @@ export default function Rehabilitacion() {
         <link rel="icon" href="/HF-MIN.png" />
       </Head>
 
-      <OtherHeader />
       <div
         className="flex flex-col bg-brand-opakeppel items-start top-0 left-0 pb-4 pt-7 md:pb-4 md:pt-10 fade-in"
         style={{

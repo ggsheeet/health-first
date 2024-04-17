@@ -62,7 +62,6 @@ export default function Estetica() {
         <link rel="icon" href="/HF-MIN.png" />
       </Head>
 
-      <OtherHeader />
       <div>
         <div
           className="flex justify-center md:justify-between mx-auto space-x-6 xl:space-x-36 items-center top-0 left-0 pb-4 pt-7 md:pb-4 md:pt-10 bg-brand-deep fade-in"
