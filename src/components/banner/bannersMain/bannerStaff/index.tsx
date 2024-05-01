@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import { staffMembers } from '@/lib/mappedObjects'
 import styles from './BannerStaff.module.css'
-import { BannerContainer } from '../../bannerContainer'
+import { BannerGeneral } from '../../bannerContainer/bannerGeneral'
 
 const BannerStaff = () => {
 	const [activeIndex, setActiveIndex] = useState(0)
@@ -12,7 +12,7 @@ const BannerStaff = () => {
 	}
 
 	return (
-		<BannerContainer>
+		<BannerGeneral>
 			<div className={styles.banner_title}>
 				<h2>Conoce al Equipo</h2>
 			</div>
@@ -81,7 +81,7 @@ const BannerStaff = () => {
 					</div>
 				))}
 			</div>
-		</BannerContainer>
+		</BannerGeneral>
 	)
 }
 

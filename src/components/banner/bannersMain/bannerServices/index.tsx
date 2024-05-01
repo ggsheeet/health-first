@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
-import { BannerContainer } from '../../bannerContainer'
+import { BannerGeneral } from '../../bannerContainer/bannerGeneral'
 import { services } from '@/lib/mappedObjects'
 import styles from './BannerServices.module.css'
 
@@ -9,10 +9,9 @@ const BannerServices = () => {
 
 	const toggleAccordion = (index: number) => {
 		setActiveIndex(index)
-		console.log(index)
 	}
 	return (
-		<BannerContainer>
+		<BannerGeneral>
 			<div className={styles.banner_title}>
 				<h2>Nuestros Servicios</h2>
 			</div>
@@ -73,7 +72,7 @@ const BannerServices = () => {
 					</div>
 				</div>
 			</div>
-		</BannerContainer>
+		</BannerGeneral>
 	)
 }
 

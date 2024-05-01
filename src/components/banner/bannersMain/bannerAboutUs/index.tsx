@@ -1,12 +1,12 @@
 import React from 'react'
 import Image from 'next/image'
-import { BannerContainer } from '../../bannerContainer'
+import { BannerGeneral } from '../../bannerContainer/bannerGeneral'
 import styles from './BannerAboutUs.module.css'
 
 const BannerAboutUs = () => {
 	return (
 		<>
-			<BannerContainer>
+			<BannerGeneral>
 				<div className={styles.banner_title}>
 					<h2>Acerca de Nosotros</h2>
 				</div>
@@ -29,7 +29,7 @@ const BannerAboutUs = () => {
 						</p>
 					</div>
 				</div>
-			</BannerContainer>
+			</BannerGeneral>
 		</>
 	)
 }

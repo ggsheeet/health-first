@@ -10,8 +10,8 @@
     hr {
         position: absolute;
         bottom: 0;
-        width: 80%;
-        max-width: 1200px;
+        width: 60%;
+        max-width: 1280px;
         border-bottom: 4px solid var(--clr-goldie);
     }
 

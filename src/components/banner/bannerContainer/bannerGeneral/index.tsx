@@ -1,7 +1,7 @@
 import React from 'react'
 import { WrapperProps } from '@/types/globalTypes'
-import styles from './BannerContainer.module.css'
+import styles from './BannerGeneral.module.css'
 
-export const BannerContainer: React.FC<WrapperProps> = ({ children }) => {
+export const BannerGeneral: React.FC<WrapperProps> = ({ children }) => {
 	return <section className={styles.banner_container}>{children}</section>
 }
