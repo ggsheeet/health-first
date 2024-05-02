@@ -7,13 +7,7 @@ import { BlogPostsProps } from '@/types/globalTypes'
 import DOMPurify from 'dompurify'
 import styles from './BannerBlog.module.css'
 
-export const BannerBlog = ({
-	categoryName,
-	bannerId
-}: {
-	categoryName: string
-	bannerId: string
-}) => {
+export const BannerBlog = ({ categoryName, bannerId }: { categoryName: string, bannerId: string }) => {
 	const [post, setPost] = useState<BlogPostsProps[]>([])
 	const [loading, setLoading] = useState(true)
 
@@ -43,6 +37,13 @@ export const BannerBlog = ({
 
 	const handleDotClick = (index: number) => {
 		setCurrentIndex(index)
+	}
+
+	const handleTouchMove = () => {
+		window.addEventListener('touchmove', ev => {
+			  ev.preventDefault();
+			  ev.stopImmediatePropagation();
+		  }, { passive: false });
 	}
 
 	const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
@@ -83,11 +84,15 @@ export const BannerBlog = ({
 	useEffect(() => {
 		calculatePages()
 
+		let timeoutId: number
 		const handleResize = () => {
-			calculatePages()
-			if (currentIndex <= numPages) {
-				setCurrentIndex(0)
-			}
+			clearTimeout(timeoutId)
+			timeoutId = window.setTimeout(() => {
+				calculatePages()
+				if (currentIndex <= numPages) {
+					setCurrentIndex(0)
+				}
+			}, 1000)
 		}
 		window.addEventListener('resize', handleResize)
 
@@ -98,7 +103,7 @@ export const BannerBlog = ({
 
 	return (
 		<>
-			<div id={bannerId} className={styles.grid_header}>
+			<div id={bannerId}className={styles.grid_header}>
 				<h2 className={styles.header_title}>{categoryName}</h2>
 				<Link href='/' className={styles.header_cta}>
 					<button>
@@ -137,6 +142,7 @@ export const BannerBlog = ({
 									<div
 										key={index}
 										onTouchStart={handleTouchStart}
+										onTouchMove={handleTouchMove}
 										onTouchEnd={handleTouchEnd}
 										className={styles.grid_post}
 										style={{
