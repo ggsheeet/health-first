@@ -39,27 +39,18 @@ export const BannerBlog = ({ categoryName, bannerId }: { categoryName: string, b
 		setCurrentIndex(index)
 	}
 
-	const handleTouchMove = () => {
-		window.addEventListener('touchmove', ev => {
-			  ev.preventDefault();
-			  ev.stopImmediatePropagation();
-		  }, { passive: false });
-	}
-
 	const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
 		setStartX(e.touches[0].clientX)
 	}
 
-	const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
+	const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
 		const endX = e.changedTouches[0].clientX
 		const deltaX = startX - endX
 		const threshold = 50
 		if (deltaX > threshold && currentIndex < numPages - 1) {
 			setCurrentIndex((prevIndex) => prevIndex + 1)
-			console.log('index and id', currentIndex, bannerId)
 		} else if (deltaX < -threshold && currentIndex > 0) {
 			setCurrentIndex((prevIndex) => prevIndex - 1)
-			console.log('index and id', currentIndex, bannerId)
 		}
 	}
 
@@ -143,7 +134,6 @@ export const BannerBlog = ({ categoryName, bannerId }: { categoryName: string, b
 										key={index}
 										onTouchStart={handleTouchStart}
 										onTouchMove={handleTouchMove}
-										onTouchEnd={handleTouchEnd}
 										className={styles.grid_post}
 										style={{
 											transform: `translateX(-${currentIndex * 109.5}%)`,
