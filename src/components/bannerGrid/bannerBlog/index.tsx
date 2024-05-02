@@ -7,7 +7,7 @@ import { BlogPostsProps } from '@/types/globalTypes'
 import DOMPurify from 'dompurify'
 import styles from './BannerBlog.module.css'
 
-export const BannerBlog = ({ categoryName }: { categoryName: string }) => {
+export const BannerBlog = ({ categoryName, bannerId }: { categoryName: string, bannerId: string }) => {
 	const [post, setPost] = useState<BlogPostsProps[]>([])
 	const [loading, setLoading] = useState(true)
 
@@ -49,8 +49,10 @@ export const BannerBlog = ({ categoryName }: { categoryName: string }) => {
 		const threshold = 50
 		if (deltaX > threshold && currentIndex < numPages - 1) {
 			setCurrentIndex((prevIndex) => prevIndex + 1)
+			console.log('index and id', currentIndex, bannerId)
 		} else if (deltaX < -threshold && currentIndex > 0) {
 			setCurrentIndex((prevIndex) => prevIndex - 1)
+			console.log('index and id', currentIndex, bannerId)
 		}
 	}
 
@@ -94,7 +96,7 @@ export const BannerBlog = ({ categoryName }: { categoryName: string }) => {
 
 	return (
 		<>
-			<div className={styles.grid_header}>
+			<div id={bannerId}className={styles.grid_header}>
 				<h2 className={styles.header_title}>{categoryName}</h2>
 				<Link href='/' className={styles.header_cta}>
 					<button>
@@ -103,7 +105,7 @@ export const BannerBlog = ({ categoryName }: { categoryName: string }) => {
 					</button>
 				</Link>
 			</div>
-			<div className={styles.grid_content}>
+			<div id={bannerId} className={styles.grid_content}>
 				<div className={styles.grid_slider}>
 					{loading ? (
 						<>
