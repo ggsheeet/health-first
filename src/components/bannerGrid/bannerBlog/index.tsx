@@ -7,7 +7,13 @@ import { BlogPostsProps } from '@/types/globalTypes'
 import DOMPurify from 'dompurify'
 import styles from './BannerBlog.module.css'
 
-export const BannerBlog = ({ categoryName, bannerId }: { categoryName: string, bannerId: string }) => {
+export const BannerBlog = ({
+	categoryName,
+	bannerId
+}: {
+	categoryName: string
+	bannerId: string
+}) => {
 	const [post, setPost] = useState<BlogPostsProps[]>([])
 	const [loading, setLoading] = useState(true)
 
@@ -77,15 +83,11 @@ export const BannerBlog = ({ categoryName, bannerId }: { categoryName: string, b
 	useEffect(() => {
 		calculatePages()
 
-		let timeoutId: number
 		const handleResize = () => {
-			clearTimeout(timeoutId)
-			timeoutId = window.setTimeout(() => {
-				calculatePages()
-				if (currentIndex <= numPages) {
-					setCurrentIndex(0)
-				}
-			}, 1000)
+			calculatePages()
+			if (currentIndex <= numPages) {
+				setCurrentIndex(0)
+			}
 		}
 		window.addEventListener('resize', handleResize)
 
@@ -96,7 +98,7 @@ export const BannerBlog = ({ categoryName, bannerId }: { categoryName: string, b
 
 	return (
 		<>
-			<div id={bannerId}className={styles.grid_header}>
+			<div id={bannerId} className={styles.grid_header}>
 				<h2 className={styles.header_title}>{categoryName}</h2>
 				<Link href='/' className={styles.header_cta}>
 					<button>
