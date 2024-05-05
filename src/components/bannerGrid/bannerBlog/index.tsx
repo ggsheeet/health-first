@@ -1,4 +1,3 @@
-'use client'
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -92,6 +91,23 @@ export const BannerBlog = ({ categoryName }: { categoryName: string }) => {
 			window.removeEventListener('resize', handleResize)
 		}
 	}, [post])
+
+	const handleBodyTouchMove = (e: TouchEvent) => {
+		const target = e.target as Element | null;
+		if (target && !target.closest('.grid_slider')) {
+			e.preventDefault();
+		}
+	};
+	
+	useEffect(() => {
+		document.body.addEventListener('touchmove', handleBodyTouchMove, {
+			passive: false,
+		});
+	
+		return () => {
+			document.body.removeEventListener('touchmove', handleBodyTouchMove);
+		};
+	}, []);
 
 	return (
 		<>
