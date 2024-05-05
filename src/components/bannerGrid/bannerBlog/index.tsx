@@ -138,7 +138,7 @@ export const BannerBlog = ({ categoryName }: { categoryName: string }) => {
 										className={styles.grid_post}
 										style={{
 											transform: `translateX(-${currentIndex * 109.5}%)`,
-											touchAction: 'pan-y'
+											touchAction: 'none'
 										}}
 									>
 										<Link
