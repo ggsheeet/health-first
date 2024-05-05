@@ -7,7 +7,7 @@ import { BlogPostsProps } from '@/types/globalTypes'
 import DOMPurify from 'dompurify'
 import styles from './BannerBlog.module.css'
 
-export const BannerBlog = ({ categoryName, bannerId }: { categoryName: string, bannerId: string }) => {
+export const BannerBlog = ({ categoryName }: { categoryName: string }) => {
 	const [post, setPost] = useState<BlogPostsProps[]>([])
 	const [loading, setLoading] = useState(true)
 
@@ -43,7 +43,8 @@ export const BannerBlog = ({ categoryName, bannerId }: { categoryName: string, b
 		setStartX(e.touches[0].clientX)
 	}
 
-	const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+	const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
+		e.preventDefault();
 		const endX = e.changedTouches[0].clientX
 		const deltaX = startX - endX
 		const threshold = 50
@@ -94,7 +95,7 @@ export const BannerBlog = ({ categoryName, bannerId }: { categoryName: string, b
 
 	return (
 		<>
-			<div id={bannerId}className={styles.grid_header}>
+			<div className={styles.grid_header}>
 				<h2 className={styles.header_title}>{categoryName}</h2>
 				<Link href='/' className={styles.header_cta}>
 					<button>
@@ -103,7 +104,7 @@ export const BannerBlog = ({ categoryName, bannerId }: { categoryName: string, b
 					</button>
 				</Link>
 			</div>
-			<div id={bannerId} className={styles.grid_content}>
+			<div className={styles.grid_content}>
 				<div className={styles.grid_slider}>
 					{loading ? (
 						<>
@@ -133,11 +134,11 @@ export const BannerBlog = ({ categoryName, bannerId }: { categoryName: string, b
 									<div
 										key={index}
 										onTouchStart={handleTouchStart}
-										onTouchMove={handleTouchMove}
+										onTouchEnd={handleTouchEnd}
 										className={styles.grid_post}
 										style={{
 											transform: `translateX(-${currentIndex * 109.5}%)`,
-											touchAction: 'none'
+											touchAction: 'pan-y'
 										}}
 									>
 										<Link

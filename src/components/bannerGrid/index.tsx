@@ -6,13 +6,13 @@ const BannerGrid = () => {
 	return (
 		<>
 			<BannerCarousel>
-				<BannerBlog categoryName='General' bannerId='gen'/>
+				<BannerBlog categoryName='General'/>
 			</BannerCarousel>
 			<BannerCarousel>
-				<BannerBlog categoryName='Salud' bannerId='health'/>
+				<BannerBlog categoryName='Salud'/>
 			</BannerCarousel>
 			<BannerCarousel>
-				<BannerBlog categoryName='Nutrición' bannerId='nutri'/>
+				<BannerBlog categoryName='Nutrición'/>
 			</BannerCarousel>
 		</>
 	)
