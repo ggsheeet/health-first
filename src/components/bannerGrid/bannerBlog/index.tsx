@@ -95,9 +95,10 @@ export const BannerBlog = ({ categoryName }: { categoryName: string }) => {
 
 	const handleBodyTouchMove = (e: TouchEvent) => {
 		const target = e.target as Element | null;
-		if (target && !target.closest('.grid_slider')) {
-			e.preventDefault();
+		if (!target || !target.closest('.grid_slider')) {
+			return;
 		}
+		e.preventDefault();
 	};
 	
 	useEffect(() => {
@@ -155,7 +156,7 @@ export const BannerBlog = ({ categoryName }: { categoryName: string }) => {
 										className={styles.grid_post}
 										style={{
 											transform: `translateX(-${currentIndex * 109.5}%)`,
-											touchAction: 'pan-y'
+											touchAction: 'none'
 										}}
 									>
 										<Link
