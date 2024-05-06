@@ -39,12 +39,11 @@ export const BannerBlog = ({ categoryName }: { categoryName: string }) => {
 		setCurrentIndex(index)
 	}
 
-	const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+	const handleTouchStart = (e: React.TouchEvent<HTMLAnchorElement>) => {
 		setStartX(e.touches[0].clientX)
 	}
 
-	const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
-		e.preventDefault();
+	const handleTouchEnd = (e: React.TouchEvent<HTMLAnchorElement>) => {
 		const endX = e.changedTouches[0].clientX
 		const deltaX = startX - endX
 		const threshold = 50
@@ -93,15 +92,11 @@ export const BannerBlog = ({ categoryName }: { categoryName: string }) => {
 		}
 	}, [post])
 
-	const handleBodyTouchMove = (e: TouchEvent) => {
-		const target = e.target as Element | null;
-		if (!target || !target.closest('.grid_slider')) {
-			return;
-		}
-		e.preventDefault();
-	};
-	
 	useEffect(() => {
+		const handleBodyTouchMove = (e: TouchEvent) => {
+			e.stopPropagation();
+		};
+	
 		document.body.addEventListener('touchmove', handleBodyTouchMove, {
 			passive: false,
 		});
@@ -151,17 +146,17 @@ export const BannerBlog = ({ categoryName }: { categoryName: string }) => {
 								return (
 									<div
 										key={index}
-										onTouchStart={handleTouchStart}
-										onTouchEnd={handleTouchEnd}
 										className={styles.grid_post}
 										style={{
 											transform: `translateX(-${currentIndex * 109.5}%)`,
-											touchAction: 'none'
+											touchAction: 'pan-y'
 										}}
 									>
 										<Link
 											href={`/blog/${post.slug}`}
 											className={styles.post_img}
+											onTouchStart={handleTouchStart}
+											onTouchEnd={handleTouchEnd}
 										>
 											<Image
 												src={post?.featuredImage?.node.sourceUrl}
@@ -171,7 +166,11 @@ export const BannerBlog = ({ categoryName }: { categoryName: string }) => {
 											/>
 											<div className={styles.post_overlay} />
 										</Link>
-										<Link href={`/blog/${post.slug}`}>
+										<Link
+											href={`/blog/${post.slug}`}
+											onTouchStart={handleTouchStart}
+											onTouchEnd={handleTouchEnd}
+										>
 											<h3
 												className={styles.post_title}
 												dangerouslySetInnerHTML={{
