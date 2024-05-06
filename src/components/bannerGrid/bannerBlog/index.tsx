@@ -28,6 +28,7 @@ export const BannerBlog = ({ categoryName }: { categoryName: string }) => {
 	const [currentIndex, setCurrentIndex] = useState(0)
 	const [numPages, setNumPages] = useState(0)
 	const [startX, setStartX] = useState(0)
+	const [endX, setEndX] = useState(0)
 
 	const itemsPerPage = {
 		desktop: 3,
@@ -39,12 +40,16 @@ export const BannerBlog = ({ categoryName }: { categoryName: string }) => {
 		setCurrentIndex(index)
 	}
 
-	const handleTouchStart = (e: React.TouchEvent<HTMLAnchorElement>) => {
+	const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
 		setStartX(e.touches[0].clientX)
 	}
 
-	const handleTouchEnd = (e: React.TouchEvent<HTMLAnchorElement>) => {
-		const endX = e.changedTouches[0].clientX
+	const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
+		setEndX(e.changedTouches[0].clientX)
+		handleTouchSwipe()
+	}
+
+	const handleTouchSwipe = () => {
 		const deltaX = startX - endX
 		const threshold = 50
 		if (deltaX > threshold && currentIndex < numPages - 1) {
@@ -92,20 +97,6 @@ export const BannerBlog = ({ categoryName }: { categoryName: string }) => {
 		}
 	}, [post])
 
-	useEffect(() => {
-		const handleBodyTouchMove = (e: TouchEvent) => {
-			e.stopPropagation();
-		};
-	
-		document.body.addEventListener('touchmove', handleBodyTouchMove, {
-			passive: false,
-		});
-	
-		return () => {
-			document.body.removeEventListener('touchmove', handleBodyTouchMove);
-		};
-	}, []);
-
 	return (
 		<>
 			<div className={styles.grid_header}>
@@ -146,6 +137,8 @@ export const BannerBlog = ({ categoryName }: { categoryName: string }) => {
 								return (
 									<div
 										key={index}
+										onTouchStart={handleTouchStart}
+										onTouchEnd={handleTouchEnd}
 										className={styles.grid_post}
 										style={{
 											transform: `translateX(-${currentIndex * 109.5}%)`,
@@ -155,8 +148,6 @@ export const BannerBlog = ({ categoryName }: { categoryName: string }) => {
 										<Link
 											href={`/blog/${post.slug}`}
 											className={styles.post_img}
-											onTouchStart={handleTouchStart}
-											onTouchEnd={handleTouchEnd}
 										>
 											<Image
 												src={post?.featuredImage?.node.sourceUrl}
@@ -166,11 +157,7 @@ export const BannerBlog = ({ categoryName }: { categoryName: string }) => {
 											/>
 											<div className={styles.post_overlay} />
 										</Link>
-										<Link
-											href={`/blog/${post.slug}`}
-											onTouchStart={handleTouchStart}
-											onTouchEnd={handleTouchEnd}
-										>
+										<Link href={`/blog/${post.slug}`}>
 											<h3
 												className={styles.post_title}
 												dangerouslySetInnerHTML={{
