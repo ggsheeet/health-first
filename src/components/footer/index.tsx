@@ -34,7 +34,7 @@ export const Footer = () => {
 							href='https://goo.gl/maps/14J8UrAggB7BTQy27'
 							className={styles.footer_info}
 						>
-							{'Calle Mina #130, Colonia Centro'}
+							{'Calle Mina #135, Colonia Centro'}
 						</CommonLink>
 						<p className={styles.footer_info}>
 							Horas de trabajo: Lun - Sab 08:00 - 20:00
